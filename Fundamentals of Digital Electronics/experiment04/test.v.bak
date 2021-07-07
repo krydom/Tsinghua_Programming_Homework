@@ -1,0 +1,82 @@
+module exercise(
+	input clk,                 // 50MHz 时钟信号
+	input reset, b0, b1,       // 重置/0/1信号
+	output Y                   // 输出信号
+)
+
+reg Button0, Button1, Signal;
+reg cnt[19:0];                // 时钟计数器
+reg Out;                      // 输出信号
+reg [1:0] state;              // 自动机
+
+always @ (posedge clk or negedge Reset)  // 给出1信号或者0信号
+begin
+	if (!Reset)
+	begin
+		Signal <= 0;
+		Button0 <= 0;
+		Button1 <= 0;
+		cnt <= 0;
+	end
+	else
+	begin
+		cnt = cnt + 1'b1;
+		if (cnt == 20'hFFFFF) cnt = 0;
+		if (!b1)
+		begin
+			if (cnt == 20'h0FFFF' && Signal == 0) 
+				button1 <= 1;
+			else if (cnt == 20'h1FFFF)
+				Signal <= 1;
+			else if (cnt == 20'h2FFFF)
+				button1 <= 0;
+		end
+		else if (!b0)
+		begin
+			if (cnt == 20'h0FFFF' && Signal == 0) 
+				button0 <= 1;
+			else if (cnt == 20'h1FFFF)
+				Signal <= 1;
+			else if (cnt == 20'h2FFFF)
+				button0 <= 0;
+		end
+		else
+		begin
+			Signal <= 0;
+			Button0 <= 0;
+			Button1 <= 0;
+			cnt <= 0;
+		end
+	end
+end
+
+always @ (posedge Signal or negedge Reset)
+begin
+	if (!Reset)
+		state <= 2'b00;
+	else
+		if (Button1)                       // 按下1进入下一状态
+			case (state)
+				2'b00: state <= 2'b01;
+				2'b01: state <= 2'b10;
+				2'b10: state <= 2'b11;
+			endcase
+		else 
+			if (Button0)
+				state <= 2'b00;              // 按下0进入0状态
+end
+
+always @ (state or Signal or Button1)
+begin
+	if (state == 2'b11)
+		if (Button1 && !Signal)
+		begin
+			Out <= 1'b1;                    // 3状态后再按下1输出1
+		end
+	else
+		Out <= 1'b0;
+end
+
+assign Y = out;
+
+endmodule

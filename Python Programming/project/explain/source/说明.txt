@@ -1,0 +1,7 @@
+news crawler.ipynb         爬取新闻
+main.ipynb                     分词处理，生成词云/条形图，提取地名
+location.py                     根据地名提取省份/国家
+statistics.py                     对省份/国家的出现次数进行统计
+BarChartRun.ipynb         省份按周出现次数的条形竞赛图
+interactive_province.py  省份的交互图
+interactive_country.py    国家的交互图

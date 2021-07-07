@@ -1,0 +1,48 @@
+# Reading pref.tcl
+# do experiment_run_msim_rtl_verilog.do
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Model Technology ModelSim - Intel FPGA Edition vmap 2020.1 Lib Mapping Utility 2020.02 Feb 28 2020
+# vmap work rtl_work 
+# Copying C:/intelFPGA_lite/20.1/modelsim_ase/win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# 
+# vlog -vlog01compat -work work +incdir+C:/Users/asus/Desktop/test {C:/Users/asus/Desktop/test/test.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 10:34:31 on Nov 22,2020
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/Users/asus/Desktop/test" C:/Users/asus/Desktop/test/test.v 
+# -- Compiling module experiment
+# 
+# Top level modules:
+# 	experiment
+# End time: 10:34:31 on Nov 22,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vlog -vlog01compat -work work +incdir+C:/Users/asus/Desktop/test/simulation/modelsim {C:/Users/asus/Desktop/test/simulation/modelsim/experiment.vt}
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 10:34:31 on Nov 22,2020
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/Users/asus/Desktop/test/simulation/modelsim" C:/Users/asus/Desktop/test/simulation/modelsim/experiment.vt 
+# -- Compiling module experiment_vlg_tst
+# 
+# Top level modules:
+# 	experiment_vlg_tst
+# End time: 10:34:31 on Nov 22,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneive_ver -L rtl_work -L work -voptargs="+acc"  experiment_vlg_tst
+# vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneive_ver -L rtl_work -L work -voptargs=""+acc"" experiment_vlg_tst 
+# Start time: 10:34:31 on Nov 22,2020
+# Loading work.experiment_vlg_tst
+# Loading work.experiment
+# 
+# add wave *
+# view structure
+# .main_pane.structure.interior.cs.body.struct
+# view signals
+# .main_pane.objects.interior.cs.body.tree
+# run -all
+# End time: 10:35:22 on Nov 22,2020, Elapsed time: 0:00:51
+# Errors: 0, Warnings: 0

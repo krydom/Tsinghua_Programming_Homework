@@ -1,0 +1,19 @@
+A.
+图论建模：
+路口作为点，道路作为边，计算某两个点之间的最短路路径。
+并且对于数据进行一些处理。
+可以将外卖小哥、商家、顾客都看成一个点，
+他们离两个路口的距离就分别是d和len-d。
+
+就是要求外卖小哥和商家、商家和顾客之间的最短距离。
+单源最短路径可以用dijkstra算法实现，可以用stl中的配对堆优化。
+typedef __gnu_pbds::priority_queue<pa, greater<pa>, pairing_heap_tag > heap;
+
+B.
+一开始dijkstra算法把pair push到heap里面时一开始只push了一个，实际上u[i]和v[i]的pair都要push，后改正。
+以及用配对堆优化dijkstra是高中OI竞赛的常用科技。
+
+C.
+空间复杂度：仅开了若干个数组和一个堆，O(m)。
+时间复杂度：
+配对堆优化的dijkstra算法时间复杂度O(nlogn + m)。
